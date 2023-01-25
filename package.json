@@ -2,21 +2,21 @@
   "name": "first_mustache",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "type":"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Graham-and-Paula/first_mustache.git"
+    "url": "git+https://github.com/PaulaB-Projects/first_mustache.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Graham-and-Paula/first_mustache/issues"
+    "url": "https://github.com/PaulaB-Projects/first_mustache/issues"
   },
-  "homepage": "https://github.com/Graham-and-Paula/first_mustache#readme",
+  "homepage": "https://github.com/PaulaB-Projects/first_mustache#readme",
   "dependencies": {
     "express": "^4.18.2",
     "mustache-express": "^1.3.2"
