@@ -1,26 +1,22 @@
+import { log as print} from 'node:console';
 import express from 'express';
-import mustacheExpress from 'mustache-express';
-import bodyParser from 'body-parser';
-import { log } from 'node:console';
+import read from './utils/read_data.js';
 
-import { fileURLToPath } from 'node:url';
-import { dirname } from 'node:path';
-
-import enterNameRoute from './routes/enterName.js';
-import displayNameRoute from './routes/displayName.js';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const ROUTES = ['index', 'portofolio', 'blog', 'contact'];
+const {domain, port} = read('settings');
 const app = express();
 
+app.use(
+	express.static(`./public`)
+);
 
-app.set('views', `${__dirname}/views`);
-app.set('view engine', 'mustache');
-app.engine('mustache', mustacheExpress());
+for (const route of ROUTES) {
+	const {default: router} = await import(`./routes/${ route }.js`);
+	app.use(router);
+}
 
-app.use(bodyParser.urlencoded({extended: true}));
-
-app.use('/', enterNameRoute);
-app.use('/', displayNameRoute);
-
-app.listen(3000, () => log("Server started!"));
+app.listen(
+	port,
+	() => print(`Server started ${ domain }:${ port }`)
+);
 
